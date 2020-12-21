@@ -20,6 +20,11 @@ body {
   display: flex;
   justify-content: center;
 }
+
+p {
+  color: white;
+}
+
 .input {
   height: 30px;
   width: 254px;
@@ -41,12 +46,17 @@ body {
   justify-content: center;
 }
 
-.display-box {
-  display: flex;
-  justify-content: center;
+#display-box {
+  display: block;
+  float: left;
   border: solid white;
   height: 331px;
   width: 359px;
   background-color: white;
   overflow: auto;
+}
+
+.listed-items {
+  margin: 5px;
+  font-size: 30px;
 }
