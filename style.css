@@ -16,9 +16,14 @@ body {
   font-size: 60px;
 }
 
+p {
+  font-size: 20px;
+}
+
 .form-section {
-  display: flex;
-  justify-content: center;
+  display: inline-block;
+
+  margin: 0 0 0 123px;
 }
 
 p {
@@ -42,21 +47,32 @@ p {
 }
 
 .box {
-  display: flex;
-  justify-content: center;
+  display: inline-block;
+  float: right;
+  margin: 38px 63px 0 0;
 }
 
 #display-box {
-  display: block;
-  float: left;
+  display: inline-block;
+
   border: solid white;
   height: 331px;
-  width: 359px;
+  width: 610px;
+  padding: 23px;
+  margin: 0 0 57px 0;
   background-color: white;
   overflow: auto;
 }
 
-.listed-items {
+.title {
   margin: 5px;
   font-size: 30px;
+}
+
+.h2 {
+  margin: 2px;
+  font-size: 24px;
+}
+
+.image {
 }
