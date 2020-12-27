@@ -8,43 +8,59 @@ const button = document.getElementById('button');
 
 function getData(){
   axios.get('https://api.vschool.io/Camila/todo/')
-    .then(response => addingToList(response.data))
+    .then(response => renderTodo(response.data))
     .catch(err => console.log(err))
 }
 
 // posts the data 
 
 
-function addingToList(data){
+function renderTodo(data){
   document.getElementById('display-box').innerHTML = ""
 
   for(let i = 0; i < data.length; i++){
-
     const htitle = document.createElement('h1')
     const hprice = document.createElement('h2');
     const hdescription = document.createElement('h2');
     const image = document.createElement('img');
+    const divider = document.createElement('hr');
+    const check = document.createElement('INPUT');
+    check.className="check";
+    check.name = 'check'
+    check.setAttribute('type', 'checkbox');
+    const checkQuestion = document.createElement('h2');
     //title
     htitle.textContent = `Title: ${data[i].title}`;
     htitle.className = 'title'
+
+    // checkbox 
+    checkQuestion.textContent = `Completed :  ` ;
+    checkQuestion.className = "check-question"
+  
     //price
     hprice.textContent = `Price: ${data[i].price}`;
     hprice.className = 'h2';
+    
     // description
     hdescription.textContent = `Description: ${data[i].description}`
     hdescription.className = 'h2';
+    
     // image 
     image.src = data[i].imgUrl;
-    image.class= "image";
-    // image.className = 'h2';
+    image.className= "image";
     
+   
     // appending to the DOM 
-    document.getElementById('display-box').appendChild(htitle) 
-    document.getElementById('display-box').appendChild(hprice);
-    document.getElementById('display-box').appendChild(hdescription);
-    document.getElementById('display-box').appendChild(image);
-
+    const displayBox = document.getElementById('display-box');
+    displayBox.appendChild(htitle) 
+    displayBox.appendChild(checkQuestion)
+    displayBox.appendChild(check);
+    displayBox.appendChild(hprice);
+    displayBox.appendChild(hdescription);
+    displayBox.appendChild(image);
+    displayBox.appendChild(divider);
   }
+
 }
 
 getData();
@@ -67,5 +83,15 @@ form.addEventListener('submit', (e) => {
 })
 
 
-//if item is completed it will have a strikethrough
 
+
+
+
+
+  // let allChecked = document.getElementsByClassName('check')
+  // let newArr = Array.from(allChecked);
+  // console.log(newArr)
+  // console.log(allChecked)
+  // for(check of allChecked){
+  //   console.log(check)
+  // }

@@ -4,15 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="style.css">
+  <!-- font cdns -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
-
-<script src = "https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.js" integrity="sha256-2JRzNxMJiS0aHOJjG+liqsEOuBb6++9cY4dSOyiijX4=" crossorigin="anonymous"></script>
+  <!-- axios cdn -->
+  <script src = "https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.js"></script>
 
   <title>ToDo List</title>
 </head>
 <body>
-  <h1 class="header">ToDo List</h1>
+  <div id="head-section">
+    <h1 class="header">ToDo List <i class="fas fa-check"></i></h1>
+   
+  </div>
+ 
   <div class="form-section">
     <form name="form">
       <p>Title:</p>
@@ -27,7 +33,7 @@
       <button id="button" type="submit">S U B M I T</button>
    </form>
   </div>
- 
+  <!-- where the list gets appended to-->
   </div>
   <div class="box">
     <div id="display-box"></div>
