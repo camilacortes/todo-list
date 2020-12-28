@@ -59,7 +59,7 @@ p {
 .box {
   display: inline-block;
   float: right;
-  margin: 0px 61px 0 0;
+  /* margin: 0px 61px 0 0; */
 }
 
 #display-box {
@@ -88,6 +88,15 @@ p {
   display: inline-block;
 }
 
+.edit {
+  display: inline-block;
+  margin: 14px;
+  background-color: black;
+  color: white;
+  height: 23px;
+  border-radius: 8px;
+}
+
 .h2 {
   margin: 2px;
   font-size: 24px;
@@ -98,4 +107,23 @@ p {
   height: 248px;
   width: 194px;
   margin: 0 0 20px 0;
+}
+
+.price-input {
+  display: block;
+  font-size: 24px;
+}
+
+.des-input {
+  font-size: 24px;
+
+  display: block;
+}
+
+.title-input {
+  margin: 5px;
+  font-size: 30px;
+  font-weight: normal;
+  color: red;
+  display: block;
 }
