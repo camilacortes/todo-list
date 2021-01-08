@@ -49,6 +49,7 @@ function renderTodo(data){
     const image = document.createElement('img');
     const divider = document.createElement('hr');
     const edit = document.createElement('button');
+    const deleteBtn= document.createElement('button');
     const check = document.createElement('INPUT');
     const checkQuestion = document.createElement('h2');
     
@@ -81,7 +82,11 @@ function renderTodo(data){
     edit.className ="edit";
     edit.textContent="EDIT";
     edit.value = 'edit';
-   
+    
+   // delete button 
+    deleteBtn.className="edit";
+    deleteBtn.textContent="DELETE";
+    deleteBtn.value = 'delete';
 
     // edit.value = "edit";
 
@@ -91,6 +96,7 @@ function renderTodo(data){
     displayBox.appendChild(checkQuestion)
     displayBox.appendChild(check);
     displayBox.appendChild(edit);
+    displayBox.appendChild(deleteBtn);
     displayBox.appendChild(hprice);
     displayBox.appendChild(hdescription);
     displayBox.appendChild(image);
@@ -118,28 +124,32 @@ function renderTodo(data){
     // edit button changing to input boxes and sending another post request
 
     edit.addEventListener('click' , buttonEvents)
+    
 
     function buttonEvents(){
+      var titleInput = document.createElement('input');
+      var priceInput = document.createElement('input');
+      var desInput = document.createElement('input');
+
       if(edit.value === 'edit'){
+        edit.type = "submit";
         edit.value = "save";
         edit.textContent = "SAVE"
         edit.style.background = "white";
         edit.style.color = "black";
         console.log('this is edit')
         //title 
-        var titleInput = document.createElement('input');
-        titleInput.type = 'text';
+        titleInput.setAttribute('type', 'text');
+        titleInput.setAttribute('name', 'titleinput');
         titleInput.className = 'title-input';
         titleInput.value =  htitle.textContent;
         htitle.parentNode.replaceChild(titleInput , htitle);
         // price 
-        var priceInput = document.createElement('input');
         priceInput.type = "text";
         priceInput.className = "price-input"
         priceInput.value = hprice.textContent;
         hprice.parentNode.replaceChild(priceInput, hprice)
         // description
-        var desInput = document.createElement('input');
         desInput.type = 'text';
         desInput.className = 'des-input';
         desInput.value = hdescription.textContent;
@@ -147,11 +157,13 @@ function renderTodo(data){
 
       } else if (edit.value === 'save'){
         console.log('you saved')
+        edit.type="submit";
         const newTitle = document.getElementsByClassName('title-input');
-        console.log(newTitle.value);
+        
+        console.log(titleInput.value);
         
 
-      //   const id = data[i]._id;
+      //   
       //   const update = {
       //   title: 'placeholder text',
       //   price: 'placeholder text',
@@ -164,7 +176,18 @@ function renderTodo(data){
        
       }
     }
-   
+    
+    // delete button 
+    deleteBtn.addEventListener('click', function(){
+        console.log('delete button was clicked');
+        const id = data[i]._id;
+        const url = `https://api.vschool.io/Camila/todo/${id}`
+        axios.delete(url)
+          .then(response => console.log(response.data))
+          .then(error => console.log(error));
+
+        location.reload();
+    })
   
   }
 
