@@ -156,26 +156,20 @@ function renderTodo(data){
         hdescription.parentNode.replaceChild(desInput, hdescription);
 
       } else if (edit.value === 'save'){
-        console.log('you saved')
-        edit.type="submit";
-        const newTitle = document.getElementsByClassName('title-input');
-        
-        console.log(titleInput.value);
-        
-
-      //   
-      //   const update = {
-      //   title: 'placeholder text',
-      //   price: 'placeholder text',
-      //   description: 'placeholder text'
-
-      // }
-      // const url = `https://api.vschool.io/Camila/todo/${id}`
-      // axios.put(url, update).then(response => console.log(response.data))
-      //   .catch(error => console.log(error));
-       
+        const newTitle = document.getElementsByClassName('title-input')[0];
+        const newPrice = document.getElementsByClassName('price-input')[0];
+        const newDesInput  = document.getElementsByClassName('des-input')[0];
+        const id = data[i]._id;
+        const update = {
+        title: newTitle.value,
+        price: newPrice.value,
+        description: newDesInput.value
       }
-    }
+      const url = `https://api.vschool.io/Camila/todo/${id}`
+      axios.put(url, update).then(response => console.log(response.data))
+        .catch(error => console.log(error));
+        }
+      }
     
     // delete button 
     deleteBtn.addEventListener('click', function(){
