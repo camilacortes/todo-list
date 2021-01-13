@@ -137,7 +137,6 @@ function renderTodo(data){
         edit.textContent = "SAVE"
         edit.style.background = "white";
         edit.style.color = "black";
-        console.log('this is edit')
         //title 
         titleInput.setAttribute('type', 'text');
         titleInput.setAttribute('name', 'titleinput');
@@ -156,19 +155,54 @@ function renderTodo(data){
         hdescription.parentNode.replaceChild(desInput, hdescription);
 
       } else if (edit.value === 'save'){
-        const newTitle = document.getElementsByClassName('title-input')[0];
-        const newPrice = document.getElementsByClassName('price-input')[0];
-        const newDesInput  = document.getElementsByClassName('des-input')[0];
+        let titleInput = document.getElementsByClassName('title-input')[0]
+        let titleInputValue = titleInput.value
+        let newTitle = document.createElement('h1')
+        newTitle.textContent = titleInputValue
+        newTitle.className = 'title'
+        // titleInput.parentNode.replaceChild(newTitle, titleInput)
+        let priceInput = document.getElementsByClassName('price-input')[0]
+        let priceInputValue = priceInput.value
+        let newPrice = document.createElement('h2')
+        newPrice.textContent = priceInputValue
+        newPrice.className = 'h2'
+        // priceInput.parentNode.replaceChild(newPrice, priceInput)
+        let desInput = document.getElementsByClassName('des-input')[0]
+        let desInputValue = desInput.value
+        let newDes = document.createElement('h2')
+        newDes.textContent = desInputValue
+        newDes.className = 'h2'
         const id = data[i]._id;
         const update = {
-        title: newTitle.value,
-        price: newPrice.value,
-        description: newDesInput.value
-      }
-      const url = `https://api.vschool.io/Camila/todo/${id}`
-      axios.put(url, update).then(response => console.log(response.data))
-        .catch(error => console.log(error));
+          title: titleInput.value,
+          price: priceInput.value,
+          description: desInput.value
         }
+        const url = `https://api.vschool.io/Camila/todo/${id}`
+        axios.put(url, update).then(response => console.log(response.data))
+          .catch(error => console.log(error));
+        titleInput.parentNode.replaceChild(newTitle, titleInput)
+        priceInput.parentNode.replaceChild(newPrice, priceInput)
+        desInput.parentNode.replaceChild(newDes, desInput)
+      }
+        // const newTitle = document.getElementsByClassName('title-input')[0];
+        // const newPrice = document.getElementsByClassName('price-input')[0];
+        // const newDesInput  = document.getElementsByClassName('des-input')[0];
+      //   const id = data[i]._id;
+      //   const update = {
+      //   title: newTitle.innerHTML,
+      //   price: newPrice.innerHTML,
+      //   description: newDes.innerHTML
+      // }
+      // const url = `https://api.vschool.io/Camila/todo/${id}`
+      // axios.put(url, update).then(response => console.log(response.data))
+      //   .catch(error => console.log(error));
+    }
+      
+      // error handle function that instructs user
+      function alerting(){
+        alert('ERROR: Please overwrite existing text before saving!');
+        location.reload();
       }
     
     // delete button 
