@@ -157,6 +157,7 @@ function renderTodo(data){
       } else if (edit.value === 'save'){
         let titleInput = document.getElementsByClassName('title-input')[0]
         let titleInputValue = titleInput.value
+       console.log(titleInputValue);
         let newTitle = document.createElement('h1')
         newTitle.textContent = titleInputValue
         newTitle.className = 'title'
@@ -174,9 +175,9 @@ function renderTodo(data){
         newDes.className = 'h2'
         const id = data[i]._id;
         const update = {
-          title: titleInput.value,
-          price: priceInput.value,
-          description: desInput.value
+          title: titleInputValue,
+          price: priceInputValue,
+          description: desInputValue
         }
         const url = `https://api.vschool.io/Camila/todo/${id}`
         axios.put(url, update).then(response => console.log(response.data))
@@ -185,18 +186,6 @@ function renderTodo(data){
         priceInput.parentNode.replaceChild(newPrice, priceInput)
         desInput.parentNode.replaceChild(newDes, desInput)
       }
-        // const newTitle = document.getElementsByClassName('title-input')[0];
-        // const newPrice = document.getElementsByClassName('price-input')[0];
-        // const newDesInput  = document.getElementsByClassName('des-input')[0];
-      //   const id = data[i]._id;
-      //   const update = {
-      //   title: newTitle.innerHTML,
-      //   price: newPrice.innerHTML,
-      //   description: newDes.innerHTML
-      // }
-      // const url = `https://api.vschool.io/Camila/todo/${id}`
-      // axios.put(url, update).then(response => console.log(response.data))
-      //   .catch(error => console.log(error));
     }
       
       // error handle function that instructs user
