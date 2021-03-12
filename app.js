@@ -23,10 +23,10 @@ form.addEventListener('submit', (e) => {
 
 
   const newToDo = {
-  title: document.form.title.value,
-  price : document.form.price.value,
-  description : document.form.description.value,
-  imgUrl : document.form.image.value
+  title: form.title.value,
+  price : form.price.value,
+  description : form.description.value,
+  imgUrl : form.image.value
   }
 
  axios.post('https://api.vschool.io/Camila/todo/', newToDo)
